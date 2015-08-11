@@ -3,8 +3,8 @@
 ## memory.  For efficiency, it is recommended that the matrices are
 ## cached especially if there are identical matrices in the set. 
 
-##The following function store matrices and cache inverse matrices.
-## The makeCacheMatrix function cache the inverse of matrices so that
+##The following function stores matrices and inverse matrices.
+## The makeCacheMatrix function stores the inverse of matrices so that
 ## efficient calculation is achieved. The function stores four functions, i.e.,
 ## MatrixStore, StoredMatrix, InverseMatrix and StoredInverse.
 
@@ -12,7 +12,7 @@ makeCacheMatrix <- function(x = matrix()) {
                 inv <- NULL
                 MatrixStore <- function(y){ 
         
-                #function stores inputted matrix
+                # function stores inputted matrix
                 
                         x <<- y
                         inv <<- NULL 
@@ -21,8 +21,8 @@ makeCacheMatrix <- function(x = matrix()) {
                 InverseMatrix <- function(inverse) inv <<- inverse
                 StoredInverse <- function() inv 
                 
-                #function stores the inverse mat
-                
+                # function stores the inverse matrix
+                # The function then makes a list of stored matrices
                 list(MatrixStore = MatrixStore,
                      StoredMatrix = StoredMatrix,
                      StoredInverse=StoredInverse,
