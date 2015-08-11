@@ -11,16 +11,13 @@
 makeCacheMatrix <- function(x = matrix()) {
                 inv <- NULL
                 MatrixStore <- function(y){ 
-        
                 # function stores inputted matrix
-                
                         x <<- y
                         inv <<- NULL 
                         }
                 StoredMatrix <- function() x
                 InverseMatrix <- function(inverse) inv <<- inverse
                 StoredInverse <- function() inv 
-                
                 # function stores the inverse matrix
                 # The function then makes a list of stored matrices
                 list(MatrixStore = MatrixStore,
@@ -29,16 +26,17 @@ makeCacheMatrix <- function(x = matrix()) {
                      InverseMatrix=InverseMatrix)
                 }
 
-## cacheSolve function first checked for StoredInverse.  
+## cacheSolve function first checked for StoredInverse.   
 ## If the function finds what it is looking for in the cached data, 
 ## it returns the inverse matrix.  However if not, it calculates the inverse
-## of the matrix using solve().
+## of the matrix using solve function.
 ## Then it returns a matrix that is the inverse of 'x'
 
 cacheSolve <- function(x,...) {
         
         inv <- x$StoredInverse()
         if(!is.null(inv)) {
+        # The function checks if inv is not empty
                 message("getting cached data")
                 return(inv)
         }
